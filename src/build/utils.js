@@ -3,10 +3,12 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { visualizer } from 'rollup-plugin-visualizer'
 
+import { configHtmlPlugin } from './plugins'
+
 const httpsReg = /^https:\/\//
 
 export function createPlugins(mode, env) {
-  const plugins = [vue(), vueJsx()]
+  const plugins = [vue(), vueJsx(), configHtmlPlugin(mode, env)]
 
   if (mode === env.VITE_DEVELOPMENT) {
     plugins.push(vueDevTools())
