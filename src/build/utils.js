@@ -2,7 +2,11 @@ const httpsReg = /^https:\/\//
 
 // ...
 
-export function createProxy(list = []) {
+export function createProxy(_list) {
+  if (!_list) return {}
+
+  const list = JSON.parse(_list)
+
   const rst = {}
   for (const [prefix, target] of list) {
     const isHttps = httpsReg.test(target)

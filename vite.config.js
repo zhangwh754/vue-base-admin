@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
     server: {
       host: '0.0.0.0',
       port: env.VITE_PORT,
-      proxy: createProxy(JSON.parse(env.VITE_PROXY)) // 代理
+      proxy: createProxy(env.VITE_PROXY) // 代理
     },
     css: {
       preprocessorOptions: {
