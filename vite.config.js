@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
+          api: 'modern', // fix deprecation warn when build
           additionalData: `@import '@/styles/variables.scss';`
         }
       }
