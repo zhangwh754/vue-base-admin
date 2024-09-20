@@ -1,6 +1,22 @@
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueDevTools from 'vite-plugin-vue-devtools'
+import { visualizer } from 'rollup-plugin-visualizer'
+
 const httpsReg = /^https:\/\//
 
-// ...
+export function createPlugins(mode, env) {
+  const plugins = [vue(), vueJsx()]
+
+  if (mode === env.VITE_DEVELOPMENT) {
+    plugins.push(vueDevTools())
+  }
+  if (mode === env.VITE_PRODUCTION) {
+    plugins.push(visualizer({ open: true }))
+  }
+
+  return plugins
+}
 
 export function createProxy(_list) {
   if (!_list) return {}
