@@ -1,9 +1,13 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
+<script setup></script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h2 class="title">Home Title</h2>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.title {
+  color: $primaryColor;
+}
+</style>
