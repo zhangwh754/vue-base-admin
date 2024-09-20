@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import axios from 'axios'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  axios.get('/api/user').then((res) => {
+    debugger
+  })
+})
+</script>
 
 <template>
   <main>
