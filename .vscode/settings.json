@@ -1,5 +1,4 @@
 {
-  "cSpell.words": [
-    "vite"
-  ]
+  "cSpell.words": ["vite"],
+  "editor.formatOnSave": true
 }
