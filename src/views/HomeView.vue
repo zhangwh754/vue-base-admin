@@ -1,23 +1,34 @@
 <script setup>
-import axios from 'axios'
+import { getUser, toRegister } from '@/api'
 
-let userInfo = reactive({})
+const userId = ref('')
 
-onMounted(() => {
-  axios.get('/api/user').then(({ data: res }) => {
-    userInfo = Object.assign(userInfo, res.data)
-  })
-})
+const {
+  loading: registerLoading,
+  error: registerError,
+  run: onRegister,
+} = useRequest(toRegister, { manual: true })
+
+const { data: userInfo, loading: getUserInfoLoading } = useRequest(getUser)
 </script>
 
 <template>
   <main>
-    <p class="title">userInfo: {{ userInfo }}</p>
+    <input v-model="userId" type="text" />
+
+    <button :disabled="registerLoading" @click="onRegister(userId)">onRegister</button>
+
+    <div v-if="registerError">{{ registerError.message }}</div>
+
+    <div class="info">
+      <div v-if="getUserInfoLoading">用户信息加载中...</div>
+      <div v-else>userInfo: {{ userInfo }}</div>
+    </div>
   </main>
 </template>
 
 <style lang="scss" scoped>
-.title {
+.info {
   color: $primaryColor;
 }
 </style>
