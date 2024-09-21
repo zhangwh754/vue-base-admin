@@ -8,7 +8,7 @@ import { configHtmlPlugin, configAutoImport } from './plugins'
 const httpsReg = /^https:\/\//
 
 export function createPlugins(mode, env) {
-  const plugins = [vue(), vueJsx(), configHtmlPlugin(mode, env), configAutoImport()]
+  const plugins = [vue(), vueJsx(), configAutoImport()]
 
   if (mode === env.VITE_DEVELOPMENT) {
     plugins.push(vueDevTools())
@@ -16,6 +16,8 @@ export function createPlugins(mode, env) {
   if (mode === env.VITE_PRODUCTION) {
     plugins.push(visualizer({ open: true }))
   }
+
+  plugins.push(configHtmlPlugin(mode, env))
 
   return plugins
 }
