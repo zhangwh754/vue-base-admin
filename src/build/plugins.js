@@ -1,4 +1,5 @@
 import { createHtmlPlugin } from 'vite-plugin-html'
+import AutoImport from 'unplugin-auto-import/vite'
 
 export function configHtmlPlugin(mode, env) {
   const { VITE_APP_TITLE } = env
@@ -11,4 +12,11 @@ export function configHtmlPlugin(mode, env) {
     },
   })
   return htmlPlugin
+}
+
+export function configAutoImport() {
+  return AutoImport({
+    imports: ['vue', 'vue-router'],
+    dts: 'auto-imports.d.ts',
+  })
 }

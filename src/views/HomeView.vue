@@ -1,17 +1,18 @@
 <script setup>
 import axios from 'axios'
-import { onMounted } from 'vue'
+
+let userInfo = reactive({})
 
 onMounted(() => {
-  axios.get('/api/user').then(res => {
-    debugger
+  axios.get('/api/user').then(({ data: res }) => {
+    userInfo = Object.assign(userInfo, res.data)
   })
 })
 </script>
 
 <template>
   <main>
-    <h2 class="title">Home Title</h2>
+    <p class="title">userInfo: {{ userInfo }}</p>
   </main>
 </template>
 
