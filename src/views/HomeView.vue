@@ -3,7 +3,7 @@ import axios from 'axios'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  axios.get('/api/user').then((res) => {
+  axios.get('/api/user').then(res => {
     debugger
   })
 })

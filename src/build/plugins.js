@@ -6,9 +6,9 @@ export function configHtmlPlugin(mode, env) {
     minify: mode === env.VITE_PRODUCTION,
     inject: {
       data: {
-        title: VITE_APP_TITLE
-      }
-    }
+        title: VITE_APP_TITLE,
+      },
+    },
   })
   return htmlPlugin
 }
