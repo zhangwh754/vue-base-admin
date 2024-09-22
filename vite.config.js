@@ -12,21 +12,21 @@ export default defineConfig(({ mode }) => {
     plugins: createPlugins(mode, env),
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
     server: {
       host: '0.0.0.0',
       port: env.VITE_PORT,
-      proxy: createProxy(env.VITE_PROXY) // 代理
+      proxy: createProxy(env.VITE_PROXY), // 代理
     },
     css: {
       preprocessorOptions: {
         scss: {
           api: 'modern', // fix deprecation warn when build
-          additionalData: `@import '@/styles/variables.scss';`
-        }
-      }
-    }
+          additionalData: `@import '@/styles/variables.scss';`,
+        },
+      },
+    },
   }
 })
