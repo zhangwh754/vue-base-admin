@@ -1,7 +1,12 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { dateZhCN, zhCN } from 'naive-ui'
+
+const locale = ref(zhCN)
+const dateLocale = ref(dateZhCN)
 </script>
 
 <template>
-  <RouterView />
+  <n-config-provider :locale="locale" :date-locale="dateLocale">
+    <RouterView />
+  </n-config-provider>
 </template>
